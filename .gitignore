@@ -4,3 +4,7 @@ dist/
 .DS_Store
 captures/
 .gstack/
+
+# local WIP — held out of the public repo for now
+explainer.html
+vite.config.js
