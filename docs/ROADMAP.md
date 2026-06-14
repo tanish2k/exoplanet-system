@@ -14,15 +14,20 @@ pass/fail gate against the reference image.
 
 ## Where we are
 
-- ✅ **Iteration 01 — Atmosphere & rim scattering.** Raymarched single-scattering
-  (Rayleigh + Mie + absorption), six physical archetypes, bloom + AgX. Verdict:
-  scattering physics reached reference quality. 4K hero shipped.
-- ✅ **Capture pipeline** (`tools/capture.mjs`) — GPU headless Chrome, supersampled
-  stills. Pulled forward early out of necessity.
-- ✅ **Public repo + README** with embedded renders.
+**Phase A (render fidelity) is complete.** Every render primitive the board needs
+is proven in shader code.
 
-Open gaps: soft surface detail, no cutaway, no codified tokens yet, typography
-undecided.
+- ✅ **01 — Atmosphere & rim scattering.** Raymarched single-scattering, six archetypes.
+- ✅ **02 — Surfaces & weather.** Turbulent gas bands + GRS, terrestrial w/ oceans &
+  clouds, ice giant.
+- ✅ **03 — Cutaway.** The risk gate — sliced strata walls + intact molten core orb.
+- ✅ **04 — Lighting & star types.** Planckian-locus star color, terminator/crescent/
+  system-context scenarios.
+- ✅ **Capture pipeline** (`tools/capture.mjs`) — GPU headless Chrome, supersampled stills.
+- ✅ **Public repo + README**.
+
+Open gaps: no codified tokens yet (Phase B next), typography undecided, README
+showcase still shows only the atmosphere set.
 
 ---
 
@@ -57,12 +62,13 @@ Killed the "blobby" softness. Three surface algorithms in one shader:
 - **Gate passed:** all three read at reference quality. Storm tint is palette-
   driven (`uColE`) so gas reads red, ice reads white. See `docs/renders/surface-*`.
 
-### Iteration 04 — Lighting, star types & context
-- Star color from temperature via the **Planckian locus** (blackbody → chromaticity),
-  so "M-dwarf" / "G2V" is one token driving both a UI badge and the scene light
-- Terminator/shadow studies, rim-lighting presets
-- Star-system context: multiple bodies, scale framing (the "Scale & Context" cards)
-- Background/lighting strip + haze-glow samples
+### Iteration 04 — Lighting, star types & context  ✅ DONE
+- Star color from temperature via the **Planckian locus** (Tanner-Helland blackbody
+  fit), driving the star disk, the planet's light, and the atmosphere rim from one
+  Kelvin value. M-dwarf (3000K, warm) → G (5800K, neutral) → A (9500K, blue-white).
+- Scenarios: terminator, red-dwarf crescent, full phase, star-system context with a
+  cratered moon (planet casts an eclipse shadow on it). See `docs/renders/lighting-*`.
+- This blackbody fn becomes a token in Phase B: star type → temp → color, everywhere.
 
 ---
 
