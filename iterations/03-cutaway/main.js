@@ -9,54 +9,54 @@ import fragmentShader from './scene.frag.glsl?raw';
 
 const vertexShader = /* glsl */ `void main() { gl_Position = vec4(position.xy, 0.0, 1.0); }`;
 
-// planet-type presets — layer radii + materials. Terrestrial is the canonical
-// anatomy diagram; others preview the "core composition examples" section.
+// Each preset = layer radii + interior materials + a type-matched exterior.
+// surfaceType: 0 terrestrial (ocean/cloud/land), 1 gas bands, 2 ice bands, 3 carbon.
+const COMMON_EXT = {
+  oceanDeep: '#0a2540', oceanShallow: '#1d5f86', landLow: '#3c6a2e', landHigh: '#8a6f3c',
+};
 const PRESETS = {
   'Terrestrial (rocky)': {
     rAtmo: 1.05, rSurface: 1.0, rCrustBase: 0.93, rMantleBase: 0.47, rInnerCore: 0.24,
-    crustA: '#6e5d49', crustB: '#a08a72',
-    mantleA: '#34221c', mantleB: '#6e4530',
+    surfaceType: 0, seaLevel: 0.52, cloudAmount: 0.5, yaw: 0.5,
+    crustA: '#6e5d49', crustB: '#a08a72', mantleA: '#34221c', mantleB: '#6e4530',
     coreCol: '#ff6310', innerCoreCol: '#ffdf95',
-    surfA: '#4a3a2e', surfB: '#8a7460', atmoCol: '#6fd8ff',
+    ...COMMON_EXT, iceCol: '#e6ecf2', cloudCol: '#f3f8ff',
+    bandA: '#caa978', bandB: '#9a6b44', bandC: '#6f4a32', atmoCol: '#6fd8ff',
     coreEmissive: 1.65, rimStrength: 1.1,
   },
   'Ice giant': {
-    rAtmo: 1.12, rSurface: 1.0, rCrustBase: 0.96, rMantleBase: 0.42, rInnerCore: 0.22,
-    crustA: '#2a4a5e', crustB: '#5a8aa0',
-    mantleA: '#1d3a52', mantleB: '#3f6f9c',
+    rAtmo: 1.10, rSurface: 1.0, rCrustBase: 0.96, rMantleBase: 0.42, rInnerCore: 0.22,
+    surfaceType: 2, seaLevel: 0.5, cloudAmount: 0.0, yaw: 0.0,
+    crustA: '#2a4a5e', crustB: '#5a8aa0', mantleA: '#1d3a52', mantleB: '#3f6f9c',
     coreCol: '#ff7a2a', innerCoreCol: '#ffd089',
-    surfA: '#244a5a', surfB: '#4f8296', atmoCol: '#74e0ff',
+    ...COMMON_EXT, iceCol: '#dff0ff', cloudCol: '#dfeefc',
+    bandA: '#2f6fc0', bandB: '#1b3f86', bandC: '#5fa0d8', atmoCol: '#74e0ff',
     coreEmissive: 1.45, rimStrength: 1.4,
   },
   'Gas giant': {
-    rAtmo: 1.14, rSurface: 1.0, rCrustBase: 0.97, rMantleBase: 0.30, rInnerCore: 0.16,
-    crustA: '#9a7a52', crustB: '#d8c49a',
-    mantleA: '#6a5070', mantleB: '#9a7088',
+    rAtmo: 1.13, rSurface: 1.0, rCrustBase: 0.97, rMantleBase: 0.30, rInnerCore: 0.16,
+    surfaceType: 1, seaLevel: 0.5, cloudAmount: 0.0, yaw: 0.0,
+    crustA: '#9a7a52', crustB: '#d8c49a', mantleA: '#6a5070', mantleB: '#9a7088',
     coreCol: '#ff8a3a', innerCoreCol: '#ffe7b0',
-    surfA: '#7a5e3e', surfB: '#c8b088', atmoCol: '#9ec8ff',
+    ...COMMON_EXT, iceCol: '#f0e8d0', cloudCol: '#f0e8d0',
+    bandA: '#caa978', bandB: '#9a6b44', bandC: '#6f4a32', atmoCol: '#9ec8ff',
     coreEmissive: 1.6, rimStrength: 1.5,
   },
   'Carbon planet': {
     rAtmo: 1.04, rSurface: 1.0, rCrustBase: 0.92, rMantleBase: 0.48, rInnerCore: 0.26,
-    crustA: '#2a2a2e', crustB: '#52525a',
-    mantleA: '#1a1a1e', mantleB: '#3a3038',
+    surfaceType: 3, seaLevel: 0.5, cloudAmount: 0.0, yaw: 0.0,
+    crustA: '#3a3a40', crustB: '#62626a', mantleA: '#1a1a1e', mantleB: '#3a3038',
     coreCol: '#ff5a12', innerCoreCol: '#ffd27a',
-    surfA: '#222226', surfB: '#48484f', atmoCol: '#7fb0d8',
+    ...COMMON_EXT, iceCol: '#cfcfd6', cloudCol: '#cfcfd6',
+    bandA: '#2a2a2e', bandB: '#52525a', bandC: '#3a3038', atmoCol: '#7fb0d8',
     coreEmissive: 1.85, rimStrength: 0.9,
   },
 };
 
 const params = {
   preset: 'Terrestrial (rocky)',
-  sunAzimuth: 28,
-  sunElevation: 30,
-  ambient: 0.17,
-  nightAmbient: 0.012,
-  boundaryGlow: 0.5,
-  exposure: 1.0,
-  bloomStrength: 0.34,
-  bloomRadius: 0.6,
-  bloomThreshold: 1.05,
+  sunAzimuth: 28, sunElevation: 30, ambient: 0.17, nightAmbient: 0.012, boundaryGlow: 0.5,
+  exposure: 1.0, bloomStrength: 0.34, bloomRadius: 0.6, bloomThreshold: 1.05,
   ...structuredClone(PRESETS['Terrestrial (rocky)']),
 };
 
@@ -69,28 +69,28 @@ document.body.appendChild(renderer.domElement);
 
 const camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0.85, 1.05, 3.0);
-
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.minDistance = 1.6;
 controls.maxDistance = 12;
 
+const C = () => new THREE.Color();
 const uniforms = {
   uResolution: { value: new THREE.Vector2() },
   uCamWorld: { value: new THREE.Matrix4() },
   uProjInv: { value: new THREE.Matrix4() },
   uLightDir: { value: new THREE.Vector3() },
   uSunColor: { value: new THREE.Color('#fff2dc') },
-  uAmbient: { value: 0.1 },
+  uAmbient: { value: 0.17 }, uNightAmbient: { value: 0.012 }, uYaw: { value: 0.5 },
   uRAtmo: { value: 1.05 }, uRSurface: { value: 1.0 },
-  uRCrustBase: { value: 0.93 }, uRMantleBase: { value: 0.5 }, uRInnerCore: { value: 0.24 },
-  uCrustA: { value: new THREE.Color() }, uCrustB: { value: new THREE.Color() },
-  uMantleA: { value: new THREE.Color() }, uMantleB: { value: new THREE.Color() },
-  uCoreCol: { value: new THREE.Color() }, uInnerCoreCol: { value: new THREE.Color() },
-  uSurfA: { value: new THREE.Color() }, uSurfB: { value: new THREE.Color() },
-  uAtmoCol: { value: new THREE.Color() },
-  uCoreEmissive: { value: 3.6 }, uRimStrength: { value: 1.1 },
-  uBoundaryGlow: { value: 0.7 }, uNightAmbient: { value: 0.012 },
+  uRCrustBase: { value: 0.93 }, uRMantleBase: { value: 0.47 }, uRInnerCore: { value: 0.24 },
+  uSurfaceType: { value: 0 }, uSeaLevel: { value: 0.52 }, uCloudAmount: { value: 0.5 },
+  uCrustA: { value: C() }, uCrustB: { value: C() }, uMantleA: { value: C() }, uMantleB: { value: C() },
+  uCoreCol: { value: C() }, uInnerCoreCol: { value: C() },
+  uOceanDeep: { value: C() }, uOceanShallow: { value: C() }, uLandLow: { value: C() }, uLandHigh: { value: C() },
+  uIceCol: { value: C() }, uCloudCol: { value: C() },
+  uBandA: { value: C() }, uBandB: { value: C() }, uBandC: { value: C() }, uAtmoCol: { value: C() },
+  uCoreEmissive: { value: 1.65 }, uRimStrength: { value: 1.1 }, uBoundaryGlow: { value: 0.5 },
 };
 
 const scene = new THREE.Scene();
@@ -116,9 +116,12 @@ gui.add(params, 'preset', Object.keys(PRESETS)).onChange((n) => {
 const fL = gui.addFolder('layers');
 fL.add(params, 'rCrustBase', 0.6, 0.99).name('crust base');
 fL.add(params, 'rMantleBase', 0.2, 0.7).name('mantle base / core top');
-fL.add(params, 'rAtmo', 1.0, 1.25).name('atmosphere top');
 fL.add(params, 'coreEmissive', 0, 8).name('core glow');
 fL.add(params, 'boundaryGlow', 0, 2).name('interface lines');
+const fE = gui.addFolder('exterior');
+fE.add(params, 'yaw', -Math.PI, Math.PI).name('spin');
+fE.add(params, 'cloudAmount', 0, 1).name('clouds');
+fE.add(params, 'seaLevel', 0.3, 0.7).name('sea level');
 const fS = gui.addFolder('star');
 fS.add(params, 'sunAzimuth', -180, 180);
 fS.add(params, 'sunElevation', -60, 80);
@@ -135,24 +138,29 @@ function syncUniforms() {
   uniforms.uLightDir.value.set(Math.cos(el)*Math.sin(az), Math.sin(el), Math.cos(el)*Math.cos(az)).normalize();
   uniforms.uAmbient.value = params.ambient;
   uniforms.uNightAmbient.value = params.nightAmbient;
+  uniforms.uYaw.value = params.yaw;
   uniforms.uBoundaryGlow.value = params.boundaryGlow;
   uniforms.uRAtmo.value = params.rAtmo;
   uniforms.uRSurface.value = params.rSurface;
   uniforms.uRCrustBase.value = params.rCrustBase;
   uniforms.uRMantleBase.value = params.rMantleBase;
   uniforms.uRInnerCore.value = params.rInnerCore;
+  uniforms.uSurfaceType.value = params.surfaceType;
+  uniforms.uSeaLevel.value = params.seaLevel;
+  uniforms.uCloudAmount.value = params.cloudAmount;
   uniforms.uCrustA.value.set(params.crustA); uniforms.uCrustB.value.set(params.crustB);
   uniforms.uMantleA.value.set(params.mantleA); uniforms.uMantleB.value.set(params.mantleB);
   uniforms.uCoreCol.value.set(params.coreCol); uniforms.uInnerCoreCol.value.set(params.innerCoreCol);
-  uniforms.uSurfA.value.set(params.surfA); uniforms.uSurfB.value.set(params.surfB);
+  uniforms.uOceanDeep.value.set(params.oceanDeep); uniforms.uOceanShallow.value.set(params.oceanShallow);
+  uniforms.uLandLow.value.set(params.landLow); uniforms.uLandHigh.value.set(params.landHigh);
+  uniforms.uIceCol.value.set(params.iceCol); uniforms.uCloudCol.value.set(params.cloudCol);
+  uniforms.uBandA.value.set(params.bandA); uniforms.uBandB.value.set(params.bandB); uniforms.uBandC.value.set(params.bandC);
   uniforms.uAtmoCol.value.set(params.atmoCol);
   uniforms.uCoreEmissive.value = params.coreEmissive;
   uniforms.uRimStrength.value = params.rimStrength;
 
   renderer.toneMappingExposure = params.exposure;
-  bloom.strength = params.bloomStrength;
-  bloom.radius = params.bloomRadius;
-  bloom.threshold = params.bloomThreshold;
+  bloom.strength = params.bloomStrength; bloom.radius = params.bloomRadius; bloom.threshold = params.bloomThreshold;
 
   camera.updateMatrixWorld();
   uniforms.uCamWorld.value.copy(camera.matrixWorld);
