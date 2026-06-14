@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exoplanet Visual System — Fidelity Lab</title>
+  <style>
+    :root {
+      --bg: #04060a;
+      --panel: rgba(14, 22, 34, 0.55);
+      --border: rgba(56, 225, 255, 0.25);
+      --text: #d7e3ee;
+      --muted: #6b7c8d;
+      --cyan: #38e1ff;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-monospace, "JetBrains Mono", "SF Mono", monospace;
+      min-height: 100vh;
+      padding: 64px;
+    }
+    h1 { font-size: 18px; letter-spacing: 0.35em; font-weight: 500; }
+    p.sub { color: var(--muted); margin-top: 8px; font-size: 13px; }
+    ul { list-style: none; margin-top: 40px; display: grid; gap: 12px; max-width: 640px; }
+    a {
+      display: block; padding: 16px 20px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text); text-decoration: none;
+      font-size: 14px;
+      transition: border-color 0.15s;
+    }
+    a:hover { border-color: var(--cyan); }
+    a span.tag { color: var(--cyan); margin-right: 12px; }
+    a span.status { float: right; color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>EXOPLANET VISUAL SYSTEM</h1>
+  <p class="sub">fidelity lab — shader iteration probes</p>
+  <ul>
+    <li><a href="/iterations/01-atmosphere/">
+      <span class="tag">01</span> Atmosphere &amp; rim scattering
+      <span class="status">active</span>
+    </a></li>
+  </ul>
+</body>
+</html>
