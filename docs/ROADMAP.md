@@ -47,13 +47,15 @@ fully in shader code. See `docs/renders/cutaway-hero.png`. The board is achievab
 - **Gate:** reads as "realistic digital illustration" next to the reference hero?
 - Effort: human ~3–4 days / CC ~half a day. The 60% of total render difficulty.
 
-### Iteration 02 — Surface detail & weather
-Kills the "blobby" softness that's the biggest delta vs. the reference today.
+### Iteration 02 — Surface detail & weather  ✅ DONE
+Killed the "blobby" softness. Three surface algorithms in one shader:
 
-- Gas giants: domain-warped fBm bands + curl-noise flow advection, vortex storms
-- Terrestrial: triplanar PBR rock, height-based biomes, specular oceans, ice caps
-- Cloud shell: separate layer with self-shadowing onto the surface, day/night
-- **Gate:** side-by-side band/storm structure vs. reference gas-giant thumbnail
+- Gas giant: domain-warped turbulent bands + a Great-Red-Spot spiral vortex
+- Terrestrial: fBm continents, ocean depth gradient + sun-glint specular, cloud
+  shell, polar ice caps, normal-mapped land
+- Ice giant: softer Neptune-style banding + a bright storm
+- **Gate passed:** all three read at reference quality. Storm tint is palette-
+  driven (`uColE`) so gas reads red, ice reads white. See `docs/renders/surface-*`.
 
 ### Iteration 04 — Lighting, star types & context
 - Star color from temperature via the **Planckian locus** (blackbody → chromaticity),
