@@ -86,6 +86,12 @@ This is what makes it a design *system* the app can consume, not a gallery.
   `iron / silicate / ice / carbon / H2He / waterVapor / CO2 / methane / exoticHaze`
   → `{ displayColor, betaR, betaM, betaA, mieG, emissive, albedo, roughness }`.
   Star types → `{ tempK, chromaticity, intensity }`.
+  - 🟡 **Started early** — `iterations/03-cutaway/materials.js` is the first
+    material registry: named materials (iron, silicate, ice, carbon, hpIce, magma,
+    metallic-H, …) with `swatch` + shader params, composed into planets by layer
+    (`core / outerCore / mantle / crust`). Live material-swap inputs in the cutaway
+    GUI. Next: lift to `packages/tokens`, add atmosphere materials (scattering
+    coeffs from iter01), and emit the W3C-token JSON + the legend swatches.
 - **Refactor:** lift the iteration shaders into `planet-engine`; the hardcoded
   `PRESETS` in `main.js` become token lookups.
 - **Gate:** change a coefficient in JSON → both the UI swatch *and* the live

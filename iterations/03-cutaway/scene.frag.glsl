@@ -30,6 +30,7 @@ uniform vec3  uMantleA;
 uniform vec3  uMantleB;
 uniform vec3  uCoreCol;
 uniform vec3  uInnerCoreCol;
+uniform vec3  uOuterCoreCol;
 uniform vec3  uOceanDeep;
 uniform vec3  uOceanShallow;
 uniform vec3  uLandLow;
@@ -168,12 +169,12 @@ vec3 shadeWall(vec3 p, vec3 fn){
   float ndl = max(dot(fn, uLightDir), 0.0);
   vec3 lit = alb * (uAmbient + ndl*0.85) * uSunColor;
 
-  // outer-core hot ring at the mantle/core boundary
+  // outer-core hot ring at the mantle/core boundary (material-driven)
   float ocRing = smoothstep(uRMantleBase + 0.06, uRMantleBase, r);
-  lit += vec3(1.0, 0.45, 0.14) * pow(ocRing, 2.0) * 1.0;
+  lit += uOuterCoreCol * pow(ocRing, 2.0) * 1.0;
   // volumetric warm bleed from the core up into the mantle
   float bleed = smoothstep(uRCrustBase, uRMantleBase, r);
-  lit += vec3(1.0, 0.34, 0.08) * pow(bleed, 2.4) * 0.55;
+  lit += uOuterCoreCol * 0.85 * pow(bleed, 2.4) * 0.55;
   // AO into the central axis crease
   float ao = smoothstep(0.0, 0.28, min(abs(p.x), abs(p.z)));
   lit *= mix(0.5, 1.0, ao);

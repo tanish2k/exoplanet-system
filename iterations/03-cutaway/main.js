@@ -6,59 +6,48 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import GUI from 'lil-gui';
 import fragmentShader from './scene.frag.glsl?raw';
+import {
+  COMPOSITIONS, MATERIALS, EXTERIORS, resolveMaterials,
+  CORE_OPTS, OUTERCORE_OPTS, MANTLE_OPTS, CRUST_OPTS,
+} from './materials.js';
 
 const vertexShader = /* glsl */ `void main() { gl_Position = vec4(position.xy, 0.0, 1.0); }`;
 
-// Each preset = layer radii + interior materials + a type-matched exterior.
-// surfaceType: 0 terrestrial (ocean/cloud/land), 1 gas bands, 2 ice bands, 3 carbon.
-const COMMON_EXT = {
-  oceanDeep: '#0a2540', oceanShallow: '#1d5f86', landLow: '#3c6a2e', landHigh: '#8a6f3c',
-};
-const PRESETS = {
-  'Terrestrial (rocky)': {
-    rAtmo: 1.05, rSurface: 1.0, rCrustBase: 0.93, rMantleBase: 0.47, rInnerCore: 0.24,
-    surfaceType: 0, seaLevel: 0.52, cloudAmount: 0.5, yaw: 0.5,
-    crustA: '#6e5d49', crustB: '#a08a72', mantleA: '#34221c', mantleB: '#6e4530',
-    coreCol: '#ff6310', innerCoreCol: '#ffdf95',
-    ...COMMON_EXT, iceCol: '#e6ecf2', cloudCol: '#f3f8ff',
-    bandA: '#caa978', bandB: '#9a6b44', bandC: '#6f4a32', atmoCol: '#6fd8ff',
-    coreEmissive: 1.65, rimStrength: 1.1,
-  },
-  'Ice giant': {
-    rAtmo: 1.10, rSurface: 1.0, rCrustBase: 0.96, rMantleBase: 0.42, rInnerCore: 0.22,
-    surfaceType: 2, seaLevel: 0.5, cloudAmount: 0.0, yaw: 0.0,
-    crustA: '#2a4a5e', crustB: '#5a8aa0', mantleA: '#1d3a52', mantleB: '#3f6f9c',
-    coreCol: '#ff7a2a', innerCoreCol: '#ffd089',
-    ...COMMON_EXT, iceCol: '#dff0ff', cloudCol: '#dfeefc',
-    bandA: '#2f6fc0', bandB: '#1b3f86', bandC: '#5fa0d8', atmoCol: '#74e0ff',
-    coreEmissive: 1.45, rimStrength: 1.4,
-  },
-  'Gas giant': {
-    rAtmo: 1.13, rSurface: 1.0, rCrustBase: 0.97, rMantleBase: 0.30, rInnerCore: 0.16,
-    surfaceType: 1, seaLevel: 0.5, cloudAmount: 0.0, yaw: 0.0,
-    crustA: '#9a7a52', crustB: '#d8c49a', mantleA: '#6a5070', mantleB: '#9a7088',
-    coreCol: '#ff8a3a', innerCoreCol: '#ffe7b0',
-    ...COMMON_EXT, iceCol: '#f0e8d0', cloudCol: '#f0e8d0',
-    bandA: '#caa978', bandB: '#9a6b44', bandC: '#6f4a32', atmoCol: '#9ec8ff',
-    coreEmissive: 1.6, rimStrength: 1.5,
-  },
-  'Carbon planet': {
-    rAtmo: 1.04, rSurface: 1.0, rCrustBase: 0.92, rMantleBase: 0.48, rInnerCore: 0.26,
-    surfaceType: 3, seaLevel: 0.5, cloudAmount: 0.0, yaw: 0.0,
-    crustA: '#3a3a40', crustB: '#62626a', mantleA: '#1a1a1e', mantleB: '#3a3038',
-    coreCol: '#ff5a12', innerCoreCol: '#ffd27a',
-    ...COMMON_EXT, iceCol: '#cfcfd6', cloudCol: '#cfcfd6',
-    bandA: '#2a2a2e', bandB: '#52525a', bandC: '#3a3038', atmoCol: '#7fb0d8',
-    coreEmissive: 1.85, rimStrength: 0.9,
-  },
-};
+// labels for the GUI dropdowns: { 'Iron': 'ironCore', ... }
+const optMap = (ids) => Object.fromEntries(ids.map((id) => [MATERIALS[id].label, id]));
 
 const params = {
-  preset: 'Terrestrial (rocky)',
-  sunAzimuth: 28, sunElevation: 30, ambient: 0.17, nightAmbient: 0.012, boundaryGlow: 0.5,
+  composition: 'Terrestrial (rocky)',
+  // live material selections (the "inputs" — pick a core/mantle/crust material)
+  core: 'ironCore', outerCore: 'magma', mantle: 'silicate', crust: 'silicateCrust',
+  exterior: 'earth',
+  // geometry + atmosphere (from composition)
+  rAtmo: 1.05, rSurface: 1.0, rCrustBase: 0.93, rMantleBase: 0.47, rInnerCore: 0.24,
+  atmoCol: '#6fd8ff', rimStrength: 1.1,
+  // global
+  sunAzimuth: 28, sunElevation: 30, ambient: 0.17, nightAmbient: 0.012, boundaryGlow: 0.5, yaw: 0.5,
   exposure: 1.0, bloomStrength: 0.34, bloomRadius: 0.6, bloomThreshold: 1.05,
-  ...structuredClone(PRESETS['Terrestrial (rocky)']),
+  // resolved material colors (filled by resolveInto)
+  crustA: '#000', crustB: '#000', mantleA: '#000', mantleB: '#000',
+  coreCol: '#000', innerCoreCol: '#000', outerCoreCol: '#000', coreEmissive: 1.65,
+  surfaceType: 0, seaLevel: 0.52, cloudAmount: 0.5,
+  oceanDeep: '#000', oceanShallow: '#000', landLow: '#000', landHigh: '#000',
+  iceCol: '#000', cloudCol: '#000', bandA: '#000', bandB: '#000', bandC: '#000',
 };
+
+// resolve current material selections into the flat color params the uniforms read
+function resolveInto() {
+  Object.assign(params, resolveMaterials(params));
+}
+// apply a full composition (materials + exterior + geometry + atmosphere)
+function applyComposition(name) {
+  const c = COMPOSITIONS[name];
+  params.core = c.core; params.outerCore = c.outerCore; params.mantle = c.mantle; params.crust = c.crust;
+  params.exterior = c.exterior; params.atmoCol = c.atmoCol; params.rimStrength = c.rimStrength;
+  Object.assign(params, c.geom);
+  resolveInto();
+}
+applyComposition('Terrestrial (rocky)');
 
 const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -86,7 +75,7 @@ const uniforms = {
   uRCrustBase: { value: 0.93 }, uRMantleBase: { value: 0.47 }, uRInnerCore: { value: 0.24 },
   uSurfaceType: { value: 0 }, uSeaLevel: { value: 0.52 }, uCloudAmount: { value: 0.5 },
   uCrustA: { value: C() }, uCrustB: { value: C() }, uMantleA: { value: C() }, uMantleB: { value: C() },
-  uCoreCol: { value: C() }, uInnerCoreCol: { value: C() },
+  uCoreCol: { value: C() }, uInnerCoreCol: { value: C() }, uOuterCoreCol: { value: C() },
   uOceanDeep: { value: C() }, uOceanShallow: { value: C() }, uLandLow: { value: C() }, uLandHigh: { value: C() },
   uIceCol: { value: C() }, uCloudCol: { value: C() },
   uBandA: { value: C() }, uBandB: { value: C() }, uBandC: { value: C() }, uAtmoCol: { value: C() },
@@ -109,19 +98,24 @@ composer.addPass(new OutputPass());
 composer.setPixelRatio(renderer.getPixelRatio());
 
 const gui = new GUI({ title: '03 · anatomy cutaway' });
-gui.add(params, 'preset', Object.keys(PRESETS)).onChange((n) => {
-  Object.assign(params, structuredClone(PRESETS[n]));
+gui.add(params, 'composition', Object.keys(COMPOSITIONS)).name('preset').onChange((n) => {
+  applyComposition(n);
   gui.controllersRecursive().forEach((c) => c.updateDisplay());
 });
+// the material input system — pick a material per layer, live
+const fM = gui.addFolder('materials');
+fM.add(params, 'core', optMap(CORE_OPTS)).name('core').onChange(resolveInto);
+fM.add(params, 'outerCore', optMap(OUTERCORE_OPTS)).name('outer core').onChange(resolveInto);
+fM.add(params, 'mantle', optMap(MANTLE_OPTS)).name('mantle').onChange(resolveInto);
+fM.add(params, 'crust', optMap(CRUST_OPTS)).name('crust').onChange(resolveInto);
+fM.add(params, 'exterior', Object.keys(EXTERIORS)).name('exterior').onChange(resolveInto);
 const fL = gui.addFolder('layers');
 fL.add(params, 'rCrustBase', 0.6, 0.99).name('crust base');
 fL.add(params, 'rMantleBase', 0.2, 0.7).name('mantle base / core top');
-fL.add(params, 'coreEmissive', 0, 8).name('core glow');
 fL.add(params, 'boundaryGlow', 0, 2).name('interface lines');
-const fE = gui.addFolder('exterior');
+const fE = gui.addFolder('exterior detail');
 fE.add(params, 'yaw', -Math.PI, Math.PI).name('spin');
 fE.add(params, 'cloudAmount', 0, 1).name('clouds');
-fE.add(params, 'seaLevel', 0.3, 0.7).name('sea level');
 const fS = gui.addFolder('star');
 fS.add(params, 'sunAzimuth', -180, 180);
 fS.add(params, 'sunElevation', -60, 80);
@@ -151,6 +145,7 @@ function syncUniforms() {
   uniforms.uCrustA.value.set(params.crustA); uniforms.uCrustB.value.set(params.crustB);
   uniforms.uMantleA.value.set(params.mantleA); uniforms.uMantleB.value.set(params.mantleB);
   uniforms.uCoreCol.value.set(params.coreCol); uniforms.uInnerCoreCol.value.set(params.innerCoreCol);
+  uniforms.uOuterCoreCol.value.set(params.outerCoreCol);
   uniforms.uOceanDeep.value.set(params.oceanDeep); uniforms.uOceanShallow.value.set(params.oceanShallow);
   uniforms.uLandLow.value.set(params.landLow); uniforms.uLandHigh.value.set(params.landHigh);
   uniforms.uIceCol.value.set(params.iceCol); uniforms.uCloudCol.value.set(params.cloudCol);
@@ -170,8 +165,9 @@ function syncUniforms() {
 
 window.__exo = {
   params,
-  applyPreset(n) { Object.assign(params, structuredClone(PRESETS[n])); gui.controllersRecursive().forEach((c) => c.updateDisplay()); },
-  presets: Object.keys(PRESETS),
+  applyPreset(n) { applyComposition(n); gui.controllersRecursive().forEach((c) => c.updateDisplay()); },
+  resolve() { resolveInto(); gui.controllersRecursive().forEach((c) => c.updateDisplay()); },
+  presets: Object.keys(COMPOSITIONS),
   setQuality(_vs, _ls, pixelRatio) {
     renderer.setPixelRatio(pixelRatio); composer.setPixelRatio(pixelRatio);
     composer.setSize(window.innerWidth, window.innerHeight);
@@ -185,7 +181,7 @@ window.addEventListener('keydown', (e) => {
   syncUniforms(); composer.render();
   const a = document.createElement('a');
   a.href = renderer.domElement.toDataURL('image/png');
-  a.download = `cutaway-${params.preset.replace(/[^a-z0-9]+/gi,'-')}.png`;
+  a.download = `cutaway-${params.composition.replace(/[^a-z0-9]+/gi,'-')}.png`;
   a.click();
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2)); composer.setPixelRatio(renderer.getPixelRatio());
   composer.setSize(window.innerWidth, window.innerHeight);
