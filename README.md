@@ -4,6 +4,12 @@ A code-only design system and rendering engine for an ultra-realistic exoplanet
 simulation. Everything is rendered in real time with Three.js + GLSL shaders. No
 AI image assets, no painted textures — the planets are physics.
 
+![H₂/He gas giant, 4K render from a single-scattering GLSL shader](docs/renders/hero.png)
+
+<sub>Hero: H₂/He gas giant, rendered at 3840×2160 from a ~100-line single-scattering
+fragment shader. The blue limb is Rayleigh scattering; the amber ring is starlight
+transmitting through the deep atmosphere; the soft terminator and bloom are all in code.</sub>
+
 > Status: early. Building the design system one fidelity probe at a time, finding
 > the ceiling of what real-time WebGL shaders can reach before locking the system.
 
@@ -30,15 +36,18 @@ Whole scene raytraced in a single fragment shader: planet sphere, single-scatter
 atmosphere (Rayleigh + Mie + wavelength-dependent absorption), star, procedural
 starfield and nebula. UnrealBloom + AgX tone mapping on top.
 
-Six physically-distinct atmosphere archetypes, all driven by scattering/absorption
-coefficients rather than hand-picked colors:
+Six physically-distinct atmosphere archetypes:
 
-- **Thin** — dusty, barely-there shell
-- **H₂/He gas giant** — deep blue Rayleigh limb
-- **Water vapor sub-Neptune** — heavy Mie haze, soft white-cyan
-- **CO₂ terrestrial** — dense amber
-- **Methane ice giant** — teal (red light absorbed, exactly like real methane)
-- **Exotic haze** — violet-magenta, strong forward scattering
+| | | |
+|:---:|:---:|:---:|
+| ![Thin atmosphere](docs/renders/thin.png) | ![H₂/He gas giant](docs/renders/h2he.png) | ![Water vapor sub-Neptune](docs/renders/water-vapor.png) |
+| **Thin** — dusty, barely-there shell | **H₂/He gas giant** — deep blue Rayleigh limb | **Water vapor** — heavy Mie haze, soft white-cyan |
+| ![CO₂ terrestrial](docs/renders/co2.png) | ![Methane ice giant](docs/renders/methane.png) | ![Exotic haze](docs/renders/exotic-haze.png) |
+| **CO₂ terrestrial** — dense amber | **Methane ice giant** — teal, red light absorbed | **Exotic haze** — violet-magenta forward scatter |
+
+Every archetype is driven by scattering/absorption coefficients, not hand-picked
+colors. The methane teal and exotic-haze violet fall out of the physics: methane
+absorbs red, so what is left reads teal.
 
 Live: drag to orbit, scroll to zoom, `lil-gui` panel for every parameter, press
 `C` for a 3× supersampled still.

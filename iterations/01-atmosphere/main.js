@@ -59,7 +59,7 @@ const PRESETS = {
     atmoHeight: 0.13, Hr: 0.045, Hm: 0.050,
     betaR: [7.0, 2.5, 9.5], betaRScale: 0.7,
     betaM: [9.5, 3.5, 11.0], betaMScale: 0.9, mieG: 0.84,
-    betaA: [1.0, 3.2, 0.6], betaAScale: 0.6,
+    betaA: [0.6, 7.5, 0.4], betaAScale: 0.9,
     surfaceMode: 2, surfColA: '#241a30', surfColB: '#4a3358',
     sunColor: '#ffe2f0', sunIntensity: 17, nightAmbient: 0.003,
   },
