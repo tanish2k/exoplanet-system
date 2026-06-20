@@ -60,8 +60,10 @@ const camera = new THREE.PerspectiveCamera(36, window.innerWidth / window.innerH
 camera.position.set(0.85, 1.05, 3.0);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.minDistance = 1.6;
+controls.minDistance = 2.2;   // keep the whole cutaway framed; closer than this washes out
 controls.maxDistance = 12;
+const HOME_POS = new THREE.Vector3(0.85, 1.05, 3.0);
+function resetView() { camera.position.copy(HOME_POS); controls.target.set(0, 0, 0); controls.update(); }
 
 const C = () => new THREE.Color();
 const uniforms = {
@@ -98,6 +100,7 @@ composer.addPass(new OutputPass());
 composer.setPixelRatio(renderer.getPixelRatio());
 
 const gui = new GUI({ title: '03 · anatomy cutaway' });
+gui.add({ resetView }, 'resetView').name('⟲ reset view');
 gui.add(params, 'composition', Object.keys(COMPOSITIONS)).name('preset').onChange((n) => {
   applyComposition(n);
   gui.controllersRecursive().forEach((c) => c.updateDisplay());
