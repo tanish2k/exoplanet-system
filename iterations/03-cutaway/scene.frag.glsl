@@ -101,9 +101,11 @@ vec3 exteriorAlbedo(vec3 sp, inout vec3 n, out float water, out float cloud){
     vec3 col;
     if (h < uSeaLevel) {
       col = mix(uOceanShallow, uOceanDeep, smoothstep(0.0,0.16,uSeaLevel-h));
+      col *= 0.94 + 0.10 * fbm(sp * 18.0);          // subtle ocean variation
       water = 1.0;
     } else {
       col = mix(uLandLow, uLandHigh, smoothstep(0.02,0.18,landAmt));
+      col *= 0.84 + 0.30 * fbm(sp * 26.0);          // fine terrain detail (holds up close)
     }
     float ice = smoothstep(0.64,0.82, abs(sp.y) + fbm(sp*5.0)*0.12 - landAmt*0.5);
     col = mix(col, uIceCol, clamp(ice,0.0,1.0));
@@ -113,7 +115,9 @@ vec3 exteriorAlbedo(vec3 sp, inout vec3 n, out float water, out float cloud){
       g -= n*dot(g,n);
       n = normalize(n - g*1.3);
     }
-    cloud = smoothstep(0.55,1.0, fbm(sp*3.2 + 1.6*fbm(sp*1.6))) * uCloudAmount;
+    float cl = smoothstep(0.55, 1.0, fbm(sp*3.2 + 1.6*fbm(sp*1.6)));
+    cl *= 0.6 + 0.55 * fbm(sp * 9.0);               // break cloud edges into wisps
+    cloud = clamp(cl, 0.0, 1.0) * uCloudAmount;
     return col;
   } else if (uSurfaceType == 1) {
     return giantBands(sp, 0.0);
@@ -138,9 +142,11 @@ vec3 shadeSurface(vec3 p){
   vec3 lit = albedo*day*uSunColor + albedo*uNightAmbient;
   lit += albedo*uAmbient*max(ndl,0.0)*0.2;
 
+  vec3 hf = normalize(uLightDir + viewDir);
   if (water > 0.5) {
-    vec3 hf = normalize(uLightDir + viewDir);
-    lit += uSunColor * pow(max(dot(n,hf),0.0), 80.0) * 0.9 * day;
+    lit += uSunColor * pow(max(dot(n,hf),0.0), 80.0) * 0.9 * day;   // ocean sun-glint
+  } else {
+    lit += uSunColor * pow(max(dot(n,hf),0.0), 16.0) * 0.05 * day;  // faint land sheen
   }
   if (cloud > 0.001) {
     lit = mix(lit, uCloudCol*(day + uNightAmbient*2.0)*uSunColor, cloud);
@@ -165,6 +171,7 @@ vec3 shadeWall(vec3 p, vec3 fn){
     float warm = smoothstep(midMantle, uRMantleBase, r);
     alb = mix(lm, vec3(0.55,0.24,0.10), warm*0.45);                          // lower mantle, warming
   }
+  alb *= 0.9 + 0.18 * fbm(p * 28.0);                                         // fine mineral grain (holds up close)
 
   float ndl = max(dot(fn, uLightDir), 0.0);
   vec3 lit = alb * (uAmbient + ndl*0.85) * uSunColor;

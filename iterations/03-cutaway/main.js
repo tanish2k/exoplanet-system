@@ -6,6 +6,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import GUI from 'lil-gui';
 import fragmentShader from './scene.frag.glsl?raw';
+import { makeFilmicPass } from '../shared/post.js';
 import {
   COMPOSITIONS, MATERIALS, EXTERIORS, resolveMaterials,
   CORE_OPTS, OUTERCORE_OPTS, MANTLE_OPTS, CRUST_OPTS,
@@ -97,6 +98,8 @@ const bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.in
   params.bloomStrength, params.bloomRadius, params.bloomThreshold);
 composer.addPass(bloom);
 composer.addPass(new OutputPass());
+const filmic = makeFilmicPass({ sharpen: 0.35, aberration: 0.0016, grain: 0.012 });
+composer.addPass(filmic);
 composer.setPixelRatio(renderer.getPixelRatio());
 
 const gui = new GUI({ title: '03 · anatomy cutaway' });
@@ -128,6 +131,9 @@ const fP = gui.addFolder('post');
 fP.add(params, 'exposure', 0.2, 3);
 fP.add(params, 'bloomStrength', 0, 2);
 fP.add(params, 'bloomThreshold', 0, 2);
+fP.add(filmic.uniforms.uSharpen, 'value', 0, 1).name('sharpen');
+fP.add(filmic.uniforms.uAberration, 'value', 0, 0.006).name('aberration');
+fP.add(filmic.uniforms.uGrain, 'value', 0, 0.04).name('grain');
 
 function syncUniforms() {
   const az = THREE.MathUtils.degToRad(params.sunAzimuth);
@@ -164,6 +170,8 @@ function syncUniforms() {
   uniforms.uCamWorld.value.copy(camera.matrixWorld);
   uniforms.uProjInv.value.copy(camera.projectionMatrixInverse);
   renderer.getDrawingBufferSize(uniforms.uResolution.value);
+  filmic.setTexel(uniforms.uResolution.value.x, uniforms.uResolution.value.y);
+  filmic.uniforms.uTime.value = performance.now() * 0.001;
 }
 
 window.__exo = {

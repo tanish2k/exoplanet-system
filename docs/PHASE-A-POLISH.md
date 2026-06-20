@@ -89,11 +89,14 @@ Phase B will tokenize, and it closes the "integration" gap directly.
   day/night terminator shading on the cloud layer.
 
 ### P3 — filmic polish
-- **D1 — Detail pass.** One more fBm octave on surfaces, subtle normal-mapped
-  terrain specular, finer cloud wisps.
-- **D2 — Tone & sharpness.** Revisit AgX exposure, add subtle post sharpening +
-  very light chromatic aberration on the limb for the filmic HDR feel.
-- **D3 — Limb darkening on the star**, and starfield twinkle/color variation.
+- **D1 — Detail pass.** ✅ Fine terrain + ocean micro-variation, finer cloud wisps,
+  faint land sheen, mineral grain on the cut walls, second turbulence octave on gas
+  bands. Surfaces now hold detail when zoomed in instead of washing flat.
+  (`02-surfaces` + `03-cutaway` scene shaders.)
+- **D2 — Tone & sharpness.** ✅ Shared filmic post pass (`iterations/shared/post.js`):
+  unsharp-mask sharpening + radial chromatic aberration + faint grain, wired into
+  all four probes with live GUI controls. Engine-bound (reusable in `planet-engine`).
+- **D3 — Limb darkening on the star**, and starfield twinkle/color variation. *(todo)*
 
 ---
 

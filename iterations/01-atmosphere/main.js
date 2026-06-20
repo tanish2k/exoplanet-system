@@ -6,6 +6,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import GUI from 'lil-gui';
 import fragmentShader from './scene.frag.glsl?raw';
+import { makeFilmicPass } from '../shared/post.js';
 
 const vertexShader = /* glsl */ `
   void main() { gl_Position = vec4(position.xy, 0.0, 1.0); }
@@ -142,6 +143,8 @@ const bloom = new UnrealBloomPass(
 );
 composer.addPass(bloom);
 composer.addPass(new OutputPass());
+const filmic = makeFilmicPass({ sharpen: 0.32, aberration: 0.0016, grain: 0.012 });
+composer.addPass(filmic);
 composer.setPixelRatio(renderer.getPixelRatio());
 
 // ---------- gui ----------
@@ -168,6 +171,9 @@ fPost.add(params, 'exposure', 0.2, 3);
 fPost.add(params, 'bloomStrength', 0, 2);
 fPost.add(params, 'bloomRadius', 0, 1.5);
 fPost.add(params, 'bloomThreshold', 0, 2);
+fPost.add(filmic.uniforms.uSharpen, 'value', 0, 1).name('sharpen');
+fPost.add(filmic.uniforms.uAberration, 'value', 0, 0.006).name('aberration');
+fPost.add(filmic.uniforms.uGrain, 'value', 0, 0.04).name('grain');
 
 const fQuality = gui.addFolder('quality');
 fQuality.add(params, 'viewSteps', 16, 256, 1);
@@ -211,6 +217,8 @@ function syncUniforms() {
   uniforms.uCamWorld.value.copy(camera.matrixWorld);
   uniforms.uProjInv.value.copy(camera.projectionMatrixInverse);
   renderer.getDrawingBufferSize(uniforms.uResolution.value);
+  filmic.setTexel(uniforms.uResolution.value.x, uniforms.uResolution.value.y);
+  filmic.uniforms.uTime.value = performance.now() * 0.001;
 }
 
 // ---------- capture: press "c" for a 3x supersampled PNG ----------

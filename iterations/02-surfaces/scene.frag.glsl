@@ -102,10 +102,12 @@ vec3 terrestrial(vec3 sp, inout vec3 n, out float water) {
   if (h < uSeaLevel) {
     float depth = uSeaLevel - h;
     col = mix(uColB, uColA, smoothstep(0.0, 0.16, depth)); // shallow -> deep
+    col *= 0.94 + 0.10 * fbm(sp * 18.0);                   // subtle ocean variation
     water = 1.0;
   } else {
     col = mix(uColC * (0.85 + 0.3*detail), uColD, smoothstep(0.02, 0.16, landAmt)); // green -> arid highland
     col = mix(col, uColE * 0.7, smoothstep(0.20, 0.30, landAmt)); // bare rock peaks
+    col *= 0.84 + 0.30 * fbm(sp * 26.0);                   // fine terrain detail (holds up close)
   }
   // polar ice caps (land ices over slightly less readily than open sea)
   float ice = smoothstep(0.64, 0.82, abs(sp.y) + fbm(sp * 5.0) * 0.12 - landAmt * 0.5);
@@ -122,8 +124,9 @@ vec3 terrestrial(vec3 sp, inout vec3 n, out float water) {
 
 float clouds(vec3 sp) {
   vec3 q = rotY(sp, uCloudYaw);
-  float c = fbm(q * 3.2 + 1.7 * fbm(q * 1.6));
-  return smoothstep(uCloudSharp, 1.0, c) * uCloudAmount;
+  float c = smoothstep(uCloudSharp, 1.0, fbm(q * 3.2 + 1.7 * fbm(q * 1.6)));
+  c *= 0.6 + 0.55 * fbm(q * 9.0);          // break cloud edges into finer wisps
+  return clamp(c, 0.0, 1.0) * uCloudAmount;
 }
 
 // ---------- gas / ice giant bands ----------
@@ -144,9 +147,10 @@ vec3 giantBands(vec3 sp, float softness) {
   col = mix(col, uColC, smoothstep(0.55, 0.95, fbm(q * 3.0)) * 0.5);
   col = mix(col, uColD, smoothstep(0.7, 0.95, band) * 0.4); // bright zones
 
-  // fine streaky turbulence along longitude
+  // fine streaky turbulence along longitude (two scales for crisp close-up detail)
   float streak = fbm(vec3(q.x * 14.0, lat * 50.0, q.z * 14.0));
   col *= 0.82 + 0.36 * streak;
+  col *= 0.9 + 0.2 * fbm(vec3(q.x * 30.0, lat * 110.0, q.z * 30.0));
 
   // Great Red Spot — a placed vortex in the southern bands.
   // Build the oval in a local tangent frame so it stays a clean ellipse.
@@ -185,11 +189,12 @@ vec3 shadeSurface(vec3 p) {
   vec3 lit = albedo * day * uSunColor + albedo * uNightAmbient;
   lit += albedo * uAmbient * max(ndl, 0.0) * 0.2;
 
-  // specular sun-glint on oceans
+  // specular sun-glint on oceans + faint sheen on land
+  vec3 hf = normalize(uLightDir + viewDir);
   if (water > 0.5) {
-    vec3 h = normalize(uLightDir + viewDir);
-    float s = pow(max(dot(n, h), 0.0), 80.0);
-    lit += uSunColor * s * 0.9 * day;
+    lit += uSunColor * pow(max(dot(n, hf), 0.0), 80.0) * 0.9 * day;
+  } else if (uSurfaceType == 0) {
+    lit += uSunColor * pow(max(dot(n, hf), 0.0), 16.0) * 0.05 * day;
   }
 
   // cloud shell (terrestrial)
