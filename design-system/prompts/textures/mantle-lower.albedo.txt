@@ -1,0 +1,8 @@
+Create a seamless, tileable square ALBEDO (base color) texture for the high-pressure LOWER MANTLE of a rocky terrestrial exoplanet.
+
+Material: dense high-pressure silicate rock — darker and deeper red-brown than the upper mantle, deep umber and maroon-brown, compressed mineral bands, tighter denser crack network. Hotter lower mantle, but still a flat-lit dark rock base with NO glowing emission baked into the color.
+Surface: dense compressed rock, fine high-frequency crack seams, subtle flow structure, high micro-detail.
+
+Lighting: flat even albedo lighting only. No directional shadows, no highlights, no vignette, no glow.
+View: orthographic top-down flat material lay, no perspective.
+Output: fills frame edge to edge, seamless and tileable, photorealistic high-end PBR material, no border, no text, no labels, pure material only.

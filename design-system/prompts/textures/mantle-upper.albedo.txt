@@ -1,0 +1,8 @@
+Create a seamless, tileable square ALBEDO (base color) texture for the hot UPPER MANTLE of a rocky terrestrial exoplanet.
+
+Material: hot silicate mantle rock — orange-brown, dark umber, burnt sienna, with darker mineral bands. Viscous solid rock with soft convection-flow structure and tight crack seams between rock cells. This is the cooler upper mantle: mostly dark rock, NOT pure liquid lava, and with NO glowing emission baked into the color.
+Surface: dense rocky texture, soft flow banding, fine crack network, high micro-detail.
+
+Lighting: flat even albedo lighting only. No directional shadows, no highlights, no vignette, no glow.
+View: orthographic top-down flat material lay, no perspective.
+Output: fills frame edge to edge, seamless and tileable, photorealistic high-end PBR material, no border, no text, no labels, pure material only.

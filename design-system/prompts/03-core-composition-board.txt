@@ -1,0 +1,21 @@
+SHARED VISUAL STYLE (keep consistent across the whole exoplanet design system): premium dark sci-fi editorial design system, NASA-style scientific visualization combined with a luxury sci-fi interface. Deep black / midnight-blue space background, subtle starfield, faint nebula texture, thin grid lines, crisp panel divisions. Clean modern sans-serif typography, wide uppercase headings, high letter spacing, small precise white labels, thin cyan annotation lines. Color accents: cyan/teal for atmosphere, orange/amber for heat and mantle/core, white/silver for ice and metal, rust/brown/basalt for rocky crust, deep blue for ocean, charcoal/graphite for carbon. Luminous, highly detailed, photorealistic planetary renders mixed with clean digital illustration. Single consistent star light direction. High contrast, information-dense but organized and legible. A pristine 4K/8K master design-system board, 16:9.
+
+Create a standalone, ultra-high-quality photorealistic 16:9 design board titled "CORE COMPOSITION SYSTEM (EXAMPLES)" with the subtitle "Comparative anatomy archetypes for exoplanet interiors." A wide premium scientific UI panel on a deep black space background with subtle starfield texture, thin vertical dividers, clean cyan/white typography, and luminous planetary renders.
+
+Show six evenly spaced columns. Each column contains: a numbered planet type name, a large semi-cutaway / half-cutaway planet render, a material layer legend using small circular swatches, and one short descriptor line at the bottom. Use consistent planet scale, lighting direction, cutaway angle, and annotation style across all six.
+
+Include these six examples exactly:
+
+1. ROCKY / TERRESTRIAL — Layers: Thin Atmosphere, Rocky Crust, Silicate Mantle, Iron-Nickel Core. Descriptor: "Earth-like balanced layers." Visual: brown-grey rocky exterior, thin cyan rim, cracked crust, orange silicate mantle, glowing iron-nickel core.
+
+2. IRON-RICH SUPER-EARTH — Layers: Thin Atmosphere, Rocky Crust, Iron-Rich Mantle, Massive Iron Core. Descriptor: "Dense core, high magnetic field." Visual: dark rocky shell, thick metallic interior, oversized silver iron core, compact high-density feeling.
+
+3. OCEAN / ICE WORLD — Layers: Thick Atmosphere, Ice Shell, Subsurface Ocean, High-Pressure Ice, Rocky Mantle, Iron Core. Descriptor: "Water-rich, strong ice phases." Visual: blue-white icy exterior, thick atmosphere, translucent ice shell, deep blue subsurface ocean, pale high-pressure ice, small rocky mantle and core.
+
+4. CARBON PLANET — Layers: Thin Atmosphere, Carbon Crust, Diamond Layer, Carbon Mantle, Iron Core. Descriptor: "Carbon-dominated, high-pressure phases." Visual: charcoal black planet, graphite crust, faceted diamond-like internal layer, dark carbon mantle, small glowing metallic core.
+
+5. GAS GIANT CORE — Layers: H2 / He Atmosphere, Molecular H Layer, Metallic H Layer, Ice / Rock Mantle, Dense Core. Descriptor: "Gas envelope, deep fluid layers." Visual: large blue/cream gas envelope, smooth pressure bands, no hard surface, fluid layer gradients, small dense core.
+
+6. LAVA WORLD — Layers: Thin Atmosphere, Magma Ocean, Silicate Mantle, Iron Core. Descriptor: "Magma ocean, volcanic surface." Visual: black basalt exterior, glowing lava fissures, bright orange magma ocean, molten silicate mantle, metallic core.
+
+Rendering rules: planet cutaways look physically believable; single consistent star light direction; clear separation between each internal layer; atmospheric rim glow on all worlds with thickness based on atmosphere type; warm emissive glow for hot interiors; cold blue-white translucency for ice and water; metallic silver highlights for iron/nickel cores; dark graphite faceting for carbon worlds. Keep all text crisp, clean, legible. Avoid clutter, blurry small details, neon colors, illegible microtext, watermark.

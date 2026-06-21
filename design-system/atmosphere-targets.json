@@ -1,0 +1,6 @@
+[
+  { "out": "design-system/refs/target-co2.png", "size": "1024x1024", "quality": "high",
+    "prompt": "Photorealistic render of a CO2-dominant exoplanet seen from space: a dense thick amber-orange hazy atmosphere that almost hides the surface (low surface visibility), a bright glowing amber-gold atmospheric limb glowing along the edge against black space, faint warm rocky surface barely visible through the haze, soft greenhouse glow, lit by a star from the upper right. Full planet centered, deep black space with a few faint stars, cinematic NASA-style, no text, no labels, no UI, no border." },
+  { "out": "design-system/refs/target-methane.png", "size": "1024x1024", "quality": "high",
+    "prompt": "Photorealistic render of a methane-rich exoplanet seen from space: a cold cyan-teal hazy atmosphere with soft blue-green photochemical haze layers, a glowing teal-cyan atmospheric limb along the edge against black space, faint pale icy surface partly visible through the haze, lit by a star from the upper right. Full planet centered, deep black space with a few faint stars, cinematic NASA-style, no text, no labels, no UI, no border." }
+]

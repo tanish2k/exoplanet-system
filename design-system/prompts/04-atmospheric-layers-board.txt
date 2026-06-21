@@ -1,0 +1,23 @@
+SHARED VISUAL STYLE (keep consistent across the whole exoplanet design system): premium dark sci-fi editorial design system, NASA-style scientific visualization combined with a luxury sci-fi interface. Deep black / midnight-blue space background, subtle starfield, faint nebula texture, thin grid lines, crisp panel divisions. Clean modern sans-serif typography, wide uppercase headings, high letter spacing, small precise white labels, thin cyan annotation lines. Color accents: cyan/teal for atmosphere, orange/amber for heat, white/silver for labels, rust/brown for rock, deep blue for ocean. Luminous, highly detailed, photorealistic planetary renders mixed with clean digital illustration. Single consistent star light direction. High contrast, information-dense but organized and legible. A pristine 4K/8K master design-system board, 16:9.
+
+Create a high-resolution photorealistic 16:9 sub-design-system board titled "EXOPLANET ATMOSPHERE SYSTEM" with the subtitle "Scattering, composition and limb signatures." Focus entirely on planetary atmospheres, laid out in clean panels.
+
+1. ATMOSPHERE ARCHETYPES — a large hero row of six planet limbs / atmosphere crescents, each the same planet scale but a different atmosphere, lit from one consistent star direction. For each, show the curved planet limb with its characteristic rim glow and a short label plus two tiny data lines (dominant gas, relative scale height):
+- THIN ATMOSPHERE: narrow crisp cyan-blue rim, minimal haze, clean silhouette.
+- H2 / HE DOMINANT: broad extended blue-and-cream banded envelope, soft scattering, no hard surface.
+- WATER VAPOR RICH: pale blue-white moist haze, soft cloud scattering, thicker translucent glow.
+- CO2 DOMINANT: dense amber-orange-brown haze, heavy scattering, low surface visibility, greenhouse mood.
+- METHANE RICH: cyan, teal and blue-green haze gradient, soft and cold, slightly opaque photochemical haze.
+- EXOTIC HAZE: violet-magenta photochemical haze, unusual forward-scattering glow.
+
+2. SCATTERING CROSS-SECTION — a clean diagram of a planet limb showing atmospheric layers from surface upward: troposphere / cloud deck, haze layer, scattering rim, exosphere fade. Thin cyan annotation lines label each, with small arrows showing incoming starlight, Rayleigh scattering (blue), Mie scattering (haze), and rim transmission (amber).
+
+3. RIM THICKNESS COMPARISON — a horizontal strip comparing rim thickness and opacity across the six archetypes, from thin crisp rim to thick extended envelope, as stacked limb slivers.
+
+4. ATMOSPHERE MATERIAL SWATCHES — labeled swatches: Thin atmosphere, H2/He, Water vapor, CO2, Methane haze, Exotic haze, Cloud deck, Dust haze, Atmospheric rim glow.
+
+5. CLOUD & WEATHER LIBRARY — small thumbnails: smooth banding, cyclonic storm, broken cloud deck, day-night terminator on clouds, high cirrus wisps.
+
+6. STAR-LIGHT EFFECT ON ATMOSPHERE — three small limbs of the same atmosphere lit by a warm star, a neutral star, and a blue star, showing how rim color shifts.
+
+Keep all text short and legible, accurate-looking scientific labels with high letter spacing. Avoid: thick atmosphere on every planet, neon colors, cartoon look, illegible microtext, blurry typography, watermark.

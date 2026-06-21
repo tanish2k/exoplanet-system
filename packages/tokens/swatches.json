@@ -1,0 +1,87 @@
+{
+  "crust-basaltic": {
+    "albedo": "#383634",
+    "glow": null,
+    "swatch": "#383634"
+  },
+  "mantle-upper": {
+    "albedo": "#4c3528",
+    "glow": "#992a06",
+    "swatch": "#7a2f13"
+  },
+  "mantle-lower": {
+    "albedo": "#3a2621",
+    "glow": "#a22e0b",
+    "swatch": "#792b14"
+  },
+  "core-liquid-metal": {
+    "albedo": "#58463a",
+    "glow": "#ac410a",
+    "swatch": "#8a431d"
+  },
+  "core-solid-metal": {
+    "albedo": "#ada898",
+    "glow": "#fab215",
+    "swatch": "#dbae4a"
+  },
+  "crust-graphite": {
+    "albedo": "#29292c",
+    "glow": null,
+    "swatch": "#29292c"
+  },
+  "crust-basalt-lava": {
+    "albedo": "#222428",
+    "glow": "#df6c08",
+    "swatch": "#935015"
+  },
+  "ice-shell": {
+    "albedo": "#bad3df",
+    "glow": null,
+    "swatch": "#bad3df"
+  },
+  "mantle-iron-rich": {
+    "albedo": "#403b37",
+    "glow": "#691c10",
+    "swatch": "#58281f"
+  },
+  "mantle-carbon": {
+    "albedo": "#252527",
+    "glow": "#632714",
+    "swatch": "#4a261c"
+  },
+  "magma-ocean": {
+    "albedo": "#45271c",
+    "glow": "#d87f16",
+    "swatch": "#9d5c18"
+  },
+  "subsurface-ocean": {
+    "albedo": "#08314e",
+    "glow": null,
+    "swatch": "#08314e"
+  },
+  "high-pressure-ice": {
+    "albedo": "#a8b8cc",
+    "glow": null,
+    "swatch": "#a8b8cc"
+  },
+  "diamond-layer": {
+    "albedo": "#cdd3da",
+    "glow": null,
+    "swatch": "#cdd3da"
+  },
+  "molecular-hydrogen": {
+    "albedo": "#adbcc7",
+    "glow": null,
+    "swatch": "#adbcc7"
+  },
+  "metallic-hydrogen": {
+    "albedo": "#7b749e",
+    "glow": "#3a304e",
+    "swatch": "#544b6e"
+  },
+  "ice-rock-mantle": {
+    "albedo": "#676c73",
+    "glow": null,
+    "swatch": "#676c73"
+  }
+}

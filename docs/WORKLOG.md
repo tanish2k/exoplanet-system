@@ -1,10 +1,14 @@
-# Exoplanet Visual System — Worklog
+# Exoplanet Visual System — Worklog (session 1)
 
-Session handoff doc. Read this first to resume. Companion docs:
-`docs/ROADMAP.md` (full plan), `docs/PHASE-A-POLISH.md` (ultra-realism backlog).
+> ⚠️ **To resume, read `docs/PROGRESS.md` first** — it has the current running state
+> (session 2, 2026-06-21: iterations 05–08, token layer, atmosphere + verification loop).
+> This file is the **session-1** detail (Phase A shader probes), kept for history.
+
+Session handoff doc. Companion docs: `docs/ROADMAP.md` (full plan),
+`docs/PHASE-A-POLISH.md` (ultra-realism backlog), `docs/GAPS.md` (accepted gaps).
 
 **Last updated:** end of session 1 (2026-06-20). **Status:** Phase A complete +
-polished; material-token layer seeded. Ready to start Phase B or finish polish.
+polished; material-token layer seeded.
 
 ---
 

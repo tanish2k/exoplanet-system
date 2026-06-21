@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
-export function makeFilmicPass({ sharpen = 0.35, aberration = 0.0016, grain = 0.012 } = {}) {
+export function makeFilmicPass({ sharpen = 0.35, aberration = 0.0016, grain = 0.012, contrast = 0.0, saturation = 1.0 } = {}) {
   const pass = new ShaderPass({
     uniforms: {
       tDiffuse: { value: null },
@@ -13,6 +13,8 @@ export function makeFilmicPass({ sharpen = 0.35, aberration = 0.0016, grain = 0.
       uSharpen: { value: sharpen },
       uAberration: { value: aberration },
       uGrain: { value: grain },
+      uContrast: { value: contrast },
+      uSaturation: { value: saturation },
       uTime: { value: 0 },
     },
     vertexShader: /* glsl */ `
@@ -25,6 +27,8 @@ export function makeFilmicPass({ sharpen = 0.35, aberration = 0.0016, grain = 0.
       uniform float uSharpen;
       uniform float uAberration;
       uniform float uGrain;
+      uniform float uContrast;
+      uniform float uSaturation;
       uniform float uTime;
       varying vec2 vUv;
 
@@ -47,6 +51,13 @@ export function makeFilmicPass({ sharpen = 0.35, aberration = 0.0016, grain = 0.
           texture2D(tDiffuse, vUv + vec2(0.0, uTexel.y)).rgb +
           texture2D(tDiffuse, vUv - vec2(0.0, uTexel.y)).rgb) * 0.25;
         col += (col - blur) * uSharpen;
+
+        // contrast S-curve around mid grey (deepens shadows, lifts highlights)
+        vec3 cc = clamp(col, 0.0, 1.0);
+        col = mix(col, cc * cc * (3.0 - 2.0 * cc), uContrast);
+        // saturation (AgX desaturates; nudge back toward the board's punch)
+        float luma = dot(col, vec3(0.2126, 0.7152, 0.0722));
+        col = mix(vec3(luma), col, uSaturation);
 
         // faint film grain
         float g = (hash(vUv * 1024.0 + uTime) - 0.5) * uGrain;

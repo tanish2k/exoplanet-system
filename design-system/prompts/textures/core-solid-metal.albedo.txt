@@ -1,0 +1,8 @@
+Create a seamless, tileable square ALBEDO (base color) texture for the solid iron-nickel INNER CORE of an exoplanet.
+
+Material: dense compressed solid metal — silver-white, nickel grey, with warm gold undertones. Smooth high-pressure metallic texture, subtle crystalline grain, low noise, dense and compact. This is the metallic base color with NO glowing emission baked in.
+Surface: smooth dense metal, faint crystalline structure, very fine grain.
+
+Lighting: flat even albedo lighting only. No directional reflections, no cast shadows, no vignette, no glow.
+View: orthographic top-down flat material lay, no perspective.
+Output: fills frame edge to edge, seamless and tileable, photorealistic high-end PBR metal material, no border, no text, no labels, pure material only.

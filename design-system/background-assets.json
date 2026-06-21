@@ -1,0 +1,8 @@
+[
+  { "out": "assets/backgrounds/env-deepspace-1.png", "size": "2560x1280", "quality": "high",
+    "prompt": "Equirectangular 360-degree panorama of deep space for a skybox: a vast dense starfield with thousands of stars of varying size, brightness and subtle color (white, blue-white, faint warm), plus soft distant nebula clouds in teal, blue and faint magenta with dark dust lanes, deep black space. Balanced across the frame with no single bright focal point, seamless horizontal wrap, equirectangular projection. No planet, no text, no border, no UI." },
+  { "out": "assets/backgrounds/env-deepspace-2.png", "size": "2560x1280", "quality": "high",
+    "prompt": "Equirectangular 360-degree panorama of deep space for a skybox: dense starfield with subtle warm gold and amber nebula dust plus cool blue gas clouds and dark dust lanes, deep black space, cinematic, balanced, seamless horizontal wrap, equirectangular projection. No planet, no text, no border, no UI." },
+  { "out": "assets/backgrounds/env-deepspace-3.png", "size": "2560x1280", "quality": "high",
+    "prompt": "Equirectangular 360-degree panorama of deep space for a skybox: mostly a deep dark starfield with many small stars and only very faint distant nebula wisps, understated and subtle, deep black, balanced, seamless horizontal wrap, equirectangular projection. No planet, no text, no border, no UI." }
+]

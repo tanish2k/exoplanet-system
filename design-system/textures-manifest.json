@@ -1,0 +1,77 @@
+{
+  "_note": "New PBR materials for the 5 remaining archetypes. Shared layers (crust-basaltic, mantle-upper/lower silicate, core-liquid-metal, core-solid-metal) are reused from the Rocky Terrestrial set and not regenerated here. albedo+emissive are gpt-image-2; data maps derived.",
+  "materials": [
+    {
+      "id": "crust-graphite", "archetypes": ["carbon"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for a carbon planet crust. Material: dark graphite and charcoal carbon rock, near-black with a faint metallic graphite sheen, subtle grey flecks and faceted carbon structure, dry and hard. Flat even albedo lighting only, no directional shadows, no highlights, no glow. Orthographic top-down flat lay, no perspective. Fills frame edge to edge, seamless and tileable, photorealistic high-end PBR, no border, no text, no labels, pure material only.",
+      "emissive": null,
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.7, "roughVar": 0.22, "normalStrength": 2.2 }
+    },
+    {
+      "id": "crust-basalt-lava", "archetypes": ["lava"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for a lava world crust. Material: black cooled basaltic rock, dark charcoal volcanic crust, cracked plates broken by deep fissures, with NO glow in the albedo (cool dark rock only). Flat even albedo lighting, no directional shadows, no glow. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": "Using the attached black basalt crust as the EXACT spatial reference, generate its EMISSIVE map: pure black (#000000) on the rock, with bright glowing orange-to-yellow molten lava ONLY in the deep fissures and cracks, following the attached crack pattern exactly. Strong incandescent lava in the cracks, black rock between. Emission only, no rock detail, no external lighting, pixel-aligned, seamless, no text, no border.",
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.85, "roughVar": 0.25, "normalStrength": 2.8 }
+    },
+    {
+      "id": "ice-shell", "archetypes": ["ocean-ice"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for an icy exoplanet surface ice shell. Material: blue-white water ice, pale cyan-white, frosted and cracked with fine fracture networks, subtle snow grain, cold and clean. Flat even albedo lighting, no shadows, no glow. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": null,
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.35, "roughVar": 0.2, "normalStrength": 2.0 }
+    },
+    {
+      "id": "mantle-iron-rich", "archetypes": ["iron-rich"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for the iron-rich mantle of a super-Earth. Material: dark metallic silicate rock with high iron content, dark grey-brown with a subtle metallic iron sheen, dense rock with thin darker veins. Flat-lit base color, no glow baked in. Orthographic top-down flat albedo lighting, no shadows. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": "Using the attached iron-rich mantle rock as the EXACT spatial reference, generate its EMISSIVE map: pure black except faint deep-red hot veins in the cracks, low intensity, following the attached crack pattern. Restrained glow, mostly black. Emission only, pixel-aligned, seamless, no text, no border.",
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.78, "roughVar": 0.22, "normalStrength": 2.3 }
+    },
+    {
+      "id": "mantle-carbon", "archetypes": ["carbon"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for a carbon planet mantle. Material: dark carbon-rich rock, deep charcoal-black with graphite-grey banding and tight crack seams, dense high-pressure carbon. Flat-lit base color, no glow baked in. Orthographic top-down flat albedo lighting. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": "Using the attached carbon mantle rock as the EXACT spatial reference, generate its EMISSIVE map: pure black except faint orange-red hot seams in the cracks, low-to-medium intensity following the attached crack pattern, mostly black. Emission only, pixel-aligned, seamless, no text, no border.",
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.82, "roughVar": 0.22, "normalStrength": 2.4 }
+    },
+    {
+      "id": "magma-ocean", "archetypes": ["lava"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for a magma ocean. Material: molten silicate lava with a dark cooling crust skin over bright molten rock, black-brown cooled plates broken by hot channels, viscous flowing magma. This is the base color only; the glow goes in the emissive map. Orthographic top-down flat albedo lighting. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": "Using the attached magma ocean as the EXACT spatial reference, generate its EMISSIVE map: bright incandescent orange-yellow-white molten lava in ALL the channels between the dark cooling crust plates, very bright and high-energy, following the attached pattern exactly. Dark/black on the cooled crust plates. Emission only, pixel-aligned, seamless, no text, no border.",
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.6, "roughVar": 0.22, "normalStrength": 2.5 }
+    },
+    {
+      "id": "subsurface-ocean", "archetypes": ["ocean-ice"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for a deep planetary ocean / subsurface water. Material: deep blue water, dark navy fading to teal, subtle caustic ripples and a depth gradient, translucent feel. Flat even albedo lighting, no glow. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end render, no border, no text, pure material only.",
+      "emissive": null,
+      "derive": { "maps": "normal,roughness,height", "roughBase": 0.12, "roughVar": 0.1, "normalStrength": 1.5 }
+    },
+    {
+      "id": "high-pressure-ice", "archetypes": ["ocean-ice"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for high-pressure ice (ice VII-like) in a planetary interior. Material: pale dense bluish-white crystalline ice, smooth compressed structure, faint facet boundaries, glassy. Flat even albedo lighting, no glow. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": null,
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.25, "roughVar": 0.15, "normalStrength": 1.6 }
+    },
+    {
+      "id": "diamond-layer", "archetypes": ["carbon"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for a faceted diamond layer inside a carbon planet. Material: translucent crystalline diamond, clear white with faint blue-grey facets, sharp crystalline geometry, glassy and refractive-looking. Flat even albedo lighting, no glow. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": null,
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.1, "roughVar": 0.1, "normalStrength": 2.6 }
+    },
+    {
+      "id": "molecular-hydrogen", "archetypes": ["gas-giant"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for the molecular hydrogen layer of a gas giant. Material: smooth fluid gas bands, soft blue, cream and pale tan horizontal flow bands with turbulent cloud swirls, no hard surface, gaseous. Flat even albedo lighting. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end render, no border, no text, pure material only.",
+      "emissive": null,
+      "derive": { "maps": "normal,roughness,height", "roughBase": 0.6, "roughVar": 0.15, "normalStrength": 1.2 }
+    },
+    {
+      "id": "metallic-hydrogen", "archetypes": ["gas-giant"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for the liquid metallic hydrogen layer of a gas giant. Material: exotic liquid metal with a purple-silver, violet and chrome sheen, smooth fluid metallic flow with subtle currents, high-pressure metallic hydrogen. Flat-lit base color, no glow baked in. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end PBR metal, no border, no text, pure material only.",
+      "emissive": "Using the attached metallic hydrogen as the EXACT spatial reference, generate its EMISSIVE map: a faint cool violet-white energy glow along the flow currents, low intensity, mostly dark, following the attached flow exactly. Emission only, pixel-aligned, seamless, no text, no border.",
+      "derive": { "maps": "normal,roughness,height,metalness", "roughBase": 0.4, "roughVar": 0.18, "normalStrength": 1.6, "metal": 1.0 }
+    },
+    {
+      "id": "ice-rock-mantle", "archetypes": ["gas-giant"],
+      "albedo": "Seamless tileable square ALBEDO (base color) texture for the ice-rock mantle of a gas or ice giant. Material: a dense mix of dark rock and bluish ice, mottled grey-brown rock with pale blue ice veins and pockets, a high-pressure slushy mix. Flat even albedo lighting, no glow. Orthographic top-down flat lay. Seamless and tileable, photorealistic high-end PBR, no border, no text, pure material only.",
+      "emissive": null,
+      "derive": { "maps": "normal,roughness,height,ao", "roughBase": 0.6, "roughVar": 0.22, "normalStrength": 2.0 }
+    }
+  ]
+}

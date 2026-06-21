@@ -1,0 +1,5 @@
+Using the attached solid-metal inner-core texture as the EXACT spatial reference, generate its EMISSIVE map.
+
+A solid glowing inner core: smooth white-orange thermal glow with an intense hot white-yellow center fading to molten gold edges, plus subtle crystalline thermal veins following the attached metal grain. Brightest white-yellow = strongest emission, orange = medium, near-black = lowest. High temperature, dense energy, mostly bright (this is the hottest layer).
+
+No external lighting, no shadows. Emission only, pixel-aligned to the attached grain. Seamless and tileable, no border, no text, no labels.

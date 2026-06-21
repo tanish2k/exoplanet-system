@@ -1,0 +1,5 @@
+Using the attached molten-metal outer-core texture as the EXACT spatial reference, generate its EMISSIVE map.
+
+A liquid metallic core glow: intense orange, gold, and yellow-white emission with bright branching heat veins and swirling currents that follow the attached metal's flow pattern exactly. Dark/near-black in the lowest-emission regions, bright orange-white in the hottest currents. High-energy but not chaotic.
+
+No external lighting, no shadows. Emission only, pixel-aligned to the attached flow. Seamless and tileable, no border, no text, no labels.

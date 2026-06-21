@@ -1,0 +1,23 @@
+SHARED VISUAL STYLE (keep consistent across the whole exoplanet design system): premium dark sci-fi editorial design system, NASA-style scientific visualization combined with a luxury sci-fi interface. Deep black / midnight-blue space background, subtle starfield, faint nebula texture, thin grid lines, crisp panel divisions. Clean modern sans-serif typography, wide uppercase headings, high letter spacing, small precise white labels, thin cyan annotation lines. Color accents: cyan/teal for atmosphere, orange/amber for heat and mantle/core, white/silver for ice and metal, rust/brown/basalt for rocky crust, deep blue for ocean, charcoal/graphite for carbon. Luminous, highly detailed, photorealistic planetary renders mixed with clean digital illustration. Single consistent star light direction. High contrast, information-dense but organized and legible. A pristine 4K/8K master design-system board, 16:9.
+
+Create a high-resolution photorealistic 16:9 sub-design-system board titled "EXOPLANET ANATOMY DESIGN SYSTEM". Focus tightly on planet anatomy and internal structure, laid out in clean panels with thin grid lines and the shared style above.
+
+1. HERO: PLANET ANATOMY REFERENCE — a large central exoplanet cutaway. The left side shows the exterior planet with surface, clouds, and a thin cyan atmosphere; the right side is sliced open to reveal internal layers with clean thin annotation lines and short labels: Atmosphere, Cloud top / observable surface, Crust, Upper mantle, Lower mantle, Outer core, Inner core. The cutaway shows a thin solid crust, a thick orange-brown silicate mantle, a hotter lower mantle, a molten outer core, and a bright glowing white-orange inner core that emits warm light into the mantle.
+
+2. ANATOMY AT A GLANCE — a sidebar with small clean line icons beside each item: Layered worlds, Compositional diversity, Pressure and temperature, Energy and magnetism, Observable signals.
+
+3. CORE COMPOSITION SYSTEM — six mini planet cutaways with clear layer differences and a small material stack each: Rocky / Terrestrial, Iron-rich Super-Earth, Ocean / Ice World, Carbon Planet, Gas Giant Core, Lava World.
+
+4. ANATOMY ELEMENT LIBRARY — reusable anatomy components as circular swatches or small spheres: Crust, Silicate mantle, Metallic outer core, Solid inner core, Ice layer, Subsurface ocean, High-pressure ice, Magma ocean, Thick cloud deck, Hazy atmosphere, Atmospheric rim glow.
+
+5. CUTAWAY STYLES / VIEW MODES — reusable visualization modes: Full cutaway sphere, Exploded layer stack, Half-section, Vertical slice, Transparent shell overlay, Radial concentric diagram.
+
+6. ATMOSPHERE + CORE RELATIONSHIPS — four example relationships: Thin atmosphere + iron-rich core, Water-vapor atmosphere + ocean interior, Methane haze + ice giant interior, Dense CO2 atmosphere + rocky mantle.
+
+7. COLOR / MATERIAL LANGUAGE — material swatches: Iron, Nickel, Silicate rock, Carbon, Ice, Magma, Metallic hydrogen, Thermal glow, H2/He gas, Water vapor, Methane haze, CO2 gas, Clouds, Dust, Atmospheric rim glow.
+
+8. LEGEND + ICON SET — monoline icons for Temperature, Pressure, Density, Gravity, Magnetic field, Tectonics, Water content, Atmosphere thickness.
+
+9. VISUAL RULES / DESIGN PRINCIPLES — concise principle cards: Layer Clarity, Scale Contrast, Material Readability, Atmosphere First Read, Cross-section Consistency.
+
+Keep the board dense but clean; keep all text short and legible. Avoid: cartoon planets, neon colors, busy fake HUD, illegible microtext, blurry typography, generic space wallpaper, identical layer thickness across all planets, watermark.

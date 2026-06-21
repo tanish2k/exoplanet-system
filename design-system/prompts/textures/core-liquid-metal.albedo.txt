@@ -1,0 +1,8 @@
+Create a seamless, tileable square ALBEDO (base color) texture for the molten liquid iron-nickel OUTER CORE of an exoplanet.
+
+Material: molten metallic iron-nickel alloy — dark bronze, copper, smoky grey, with warm orange undertones. Fluid metallic turbulence, smooth dense flow, swirling convective currents, subtle reflective-looking metallic structure, high-pressure molten material. This is the metallic base color with NO glowing emission baked in.
+Surface: smooth flowing metallic turbulence, soft swirling cells, high micro-detail.
+
+Lighting: flat even albedo lighting only. No external highlights, no cast shadows, no vignette, no glow.
+View: orthographic top-down flat material lay, no perspective.
+Output: fills frame edge to edge, seamless and tileable, photorealistic high-end PBR metal material, no border, no text, no labels, pure material only.

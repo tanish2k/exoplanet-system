@@ -1,0 +1,19 @@
+{
+  "crust-basaltic":     { "label": "Basaltic Crust",          "category": "crust",   "maps": ["albedo", "normal", "roughness", "ao"] },
+  "mantle-upper":       { "label": "Upper Mantle",            "category": "mantle",  "maps": ["albedo", "emissive", "normal", "roughness", "ao"] },
+  "mantle-lower":       { "label": "Lower Mantle",            "category": "mantle",  "maps": ["albedo", "emissive", "normal", "roughness", "ao"] },
+  "core-liquid-metal":  { "label": "Liquid Metal (Outer Core)", "category": "core",  "maps": ["albedo", "emissive", "normal", "roughness", "metalness"] },
+  "core-solid-metal":   { "label": "Solid Metal (Inner Core)",  "category": "core",  "maps": ["albedo", "emissive", "normal", "roughness", "metalness"] },
+  "crust-graphite":     { "label": "Graphite Crust",          "category": "crust",   "maps": ["albedo", "normal", "roughness", "ao"] },
+  "crust-basalt-lava":  { "label": "Basalt + Lava Crust",     "category": "crust",   "maps": ["albedo", "emissive", "normal", "roughness", "ao"] },
+  "ice-shell":          { "label": "Ice Shell",               "category": "ice",     "maps": ["albedo", "normal", "roughness", "ao"] },
+  "mantle-iron-rich":   { "label": "Iron-rich Mantle",        "category": "mantle",  "maps": ["albedo", "emissive", "normal", "roughness", "ao"] },
+  "mantle-carbon":      { "label": "Carbon Mantle",           "category": "mantle",  "maps": ["albedo", "emissive", "normal", "roughness", "ao"] },
+  "magma-ocean":        { "label": "Magma Ocean",             "category": "molten",  "maps": ["albedo", "emissive", "normal", "roughness", "ao"] },
+  "subsurface-ocean":   { "label": "Subsurface Ocean",        "category": "ocean",   "maps": ["albedo", "normal", "roughness"] },
+  "high-pressure-ice":  { "label": "High-Pressure Ice",       "category": "ice",     "maps": ["albedo", "normal", "roughness", "ao"] },
+  "diamond-layer":      { "label": "Diamond Layer",           "category": "crystal", "maps": ["albedo", "normal", "roughness", "ao"] },
+  "molecular-hydrogen": { "label": "Molecular Hydrogen",      "category": "gas",     "maps": ["albedo", "normal", "roughness"] },
+  "metallic-hydrogen":  { "label": "Metallic Hydrogen",       "category": "metal",   "maps": ["albedo", "emissive", "normal", "roughness", "metalness"] },
+  "ice-rock-mantle":    { "label": "Ice / Rock Mantle",       "category": "mantle",  "maps": ["albedo", "normal", "roughness", "ao"] }
+}

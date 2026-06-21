@@ -1,0 +1,33 @@
+[
+  { "out": "assets/clouds/cloud-broken-deck.png", "size": "1024x1024", "quality": "high",
+    "prompt": "Seamless tileable texture: scattered broken cumulus cloud field, soft white and pale grey clouds on a PURE BLACK background (only the clouds are bright, the gaps are solid black so the image doubles as an opacity map). Irregular natural broken cloud deck, fluffy, high detail. Top-down orthographic flat lay, no perspective, no horizon, fills frame edge to edge, seamless, no text, no border." },
+  { "out": "assets/clouds/cloud-cirrus.png", "size": "1024x1024", "quality": "high",
+    "prompt": "Seamless tileable texture: thin high cirrus clouds, faint wispy white streaks and feathery bands on a PURE BLACK background (clouds bright, gaps solid black for opacity). Delicate sparse high-altitude wisps. Top-down orthographic flat lay, no perspective, seamless, no text, no border." },
+  { "out": "assets/clouds/cloud-vapor-deck.png", "size": "1024x1024", "quality": "high",
+    "prompt": "Seamless tileable texture: thick water-vapor cloud deck, dense soft white and pale blue-white clouds almost fully covering, with a few darker gaps, on a PURE BLACK background (clouds bright, gaps black for opacity). Heavy moist overcast. Top-down orthographic flat lay, no perspective, seamless, no text, no border." },
+  { "out": "assets/clouds/cloud-cyclonic.png", "size": "1024x1024", "quality": "high",
+    "prompt": "Seamless tileable texture: cyclonic storm systems, white spiral vortex cloud swirls with an eye, on a PURE BLACK background (clouds bright, gaps black for opacity). Several rotating storm cells. Top-down orthographic flat lay, no perspective, seamless, no text, no border." },
+  { "out": "assets/clouds/cloud-banding.png", "size": "1024x1024", "quality": "high",
+    "prompt": "Seamless tileable texture: smooth gas-giant cloud bands, soft horizontal cream, white and pale tan turbulent striations with fine flow detail, on a dark background. Continuous horizontal banding. Top-down orthographic flat lay, no perspective, seamless tileable, no text, no border." },
+
+  { "out": "assets/backgrounds/nebula-teal-magenta.png", "size": "1536x1024", "quality": "high",
+    "prompt": "Vivid deep-space nebula backdrop: teal, cyan and magenta interstellar gas clouds with dust lanes, a dense field of stars, deep black space, cinematic and high detail, subtle glow. No planet, no text, no border, no UI." },
+  { "out": "assets/backgrounds/nebula-blue-gold.png", "size": "1536x1024", "quality": "high",
+    "prompt": "Vivid deep-space nebula backdrop: deep blue and warm gold gas clouds with dark dust lanes, a dense starfield, deep black space, cinematic and high detail. No planet, no text, no border, no UI." },
+
+  { "out": "assets/sprites/star-glow.png", "size": "1024x1024", "quality": "high",
+    "prompt": "A brilliant distant star on a PURE BLACK background: a small intensely bright white-hot core, a soft warm radial halo, and subtle thin diffraction spikes / lens flare. Centered, additive-glow style, smooth gradient falloff to black. No planet, no text, no border." },
+
+  { "out": "design-system/refs/haze-thin.png", "size": "1024x1024", "quality": "medium",
+    "prompt": "Reference render: a rocky planet limb with a THIN atmosphere — a narrow crisp cyan-blue scattering rim, very subtle haze, clean silhouette, dark space background. Cinematic, photoreal. No text, no UI." },
+  { "out": "design-system/refs/haze-h2he.png", "size": "1024x1024", "quality": "medium",
+    "prompt": "Reference render: a gas-giant limb with an H2/He atmosphere — broad smooth blue and cream banded envelope, thick extended soft scattering, no hard surface, dark space. Cinematic, photoreal. No text, no UI." },
+  { "out": "design-system/refs/haze-water-vapor.png", "size": "1024x1024", "quality": "medium",
+    "prompt": "Reference render: a planet limb with a water-vapor-rich atmosphere — pale blue-white moist haze, soft cloud scattering, thick translucent atmospheric glow, dark space. Cinematic, photoreal. No text, no UI." },
+  { "out": "design-system/refs/haze-co2.png", "size": "1024x1024", "quality": "medium",
+    "prompt": "Reference render: a rocky planet limb with a dense CO2 atmosphere — amber-orange-brown haze, thick scattering, low surface visibility, heavy greenhouse shell, dark space. Cinematic, photoreal. No text, no UI." },
+  { "out": "design-system/refs/haze-methane.png", "size": "1024x1024", "quality": "medium",
+    "prompt": "Reference render: a cold planet limb with a methane-rich haze atmosphere — cyan, teal and blue-green haze gradients, soft cold slightly opaque photochemical haze, dark space. Cinematic, photoreal. No text, no UI." },
+  { "out": "design-system/refs/haze-exotic.png", "size": "1024x1024", "quality": "medium",
+    "prompt": "Reference render: a planet limb with an exotic photochemical haze atmosphere — violet and magenta haze with unusual forward-scattering glow, dark space. Cinematic, photoreal. No text, no UI." }
+]

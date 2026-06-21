@@ -1,0 +1,5 @@
+Using the attached upper-mantle rock texture as the EXACT spatial reference, generate its EMISSIVE map.
+
+Pure black (#000000) everywhere the rock is not hot. ONLY the cracks and seams between the rock cells glow, with a low-to-medium-intensity deep orange-red thermal glow, following the attached rock's crack pattern exactly. Restrained — much more black than glow (cooler upper mantle). Fine glowing cracks and soft convection seams only.
+
+No rock surface detail, no external lighting, no shadows. Black background, colored glow only, pixel-aligned to the attached cracks. Seamless and tileable, no border, no text, no labels.

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>08 · Scattering Cross-Section</title>
+  <style>
+    * { margin: 0; box-sizing: border-box; }
+    html, body { height: 100%; background: #04060a; overflow: hidden;
+      font-family: ui-monospace, "SF Mono", monospace; }
+    canvas { display: block; }
+    #leaders { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
+    #labels { position: fixed; inset: 0; z-index: 6; pointer-events: none; }
+    .lbl { position: absolute; color: #cfe3f2; white-space: nowrap; }
+    .lbl .name { font-size: 14px; letter-spacing: 0.12em; font-weight: 500; }
+    .lbl .sub { font-size: 11px; color: #7d93a6; letter-spacing: 0.06em; margin-top: 2px; }
+    .lbl.r { text-align: left; }
+    .lbl.l { text-align: right; }
+    .dot { position: absolute; width: 7px; height: 7px; border-radius: 50%; transform: translate(-50%,-50%); }
+    #hint { position: fixed; left: 16px; bottom: 14px; z-index: 10; font-size: 11px; color: #6b7c8d; letter-spacing: 0.04em; pointer-events: none; }
+    #hint b { color: #38e1ff; }
+  </style>
+</head>
+<body>
+  <svg id="leaders"></svg>
+  <div id="labels"></div>
+  <div id="hint">drag orbit · scroll zoom · <b>C</b> 3× still — scattering cross-section (annotated)</div>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

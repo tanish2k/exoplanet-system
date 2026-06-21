@@ -1,0 +1,27 @@
+A high-resolution, photorealistic 16:9 dark sci-fi editorial DESIGN SYSTEM BOARD titled "EXOPLANET VISUAL SYSTEM". A premium scientific reference sheet that explains a complete digital visual language for exoplanet anatomy, atmosphere, and core composition — like NASA scientific visualization combined with a luxury sci-fi interface and an editorial design system. Information-dense but organized, legible, and elegant.
+
+Background and scene: deep black and midnight-blue space background, subtle starfield, faint nebula texture, thin grid lines, crisp panel divisions, clean modern sans-serif typography, cyan/teal atmosphere accents, orange thermal/core accents, white scientific labels, highly detailed luminous planetary renders. High contrast but not noisy.
+
+Lay the board out in clearly divided panels with these major sections:
+
+1. COLOR PALETTE — core material swatches: iron, nickel, silicate rock, carbon, ice, magma, metallic hydrogen, thermal glow. Atmosphere material swatches: thin atmosphere, H2/He, water vapor, CO2, methane haze, exotic haze, cloud deck, dust haze, atmospheric rim glow.
+
+2. TYPOGRAPHY — clean heading and body typography examples in a modern sans-serif, with weight labels: Light, Regular, Medium, Semibold, Bold.
+
+3. VISUAL LANGUAGE — small example thumbnails for layered atmospheres, soft scattering, dynamic weather, subsurface hints, rim lighting, scale and context.
+
+4. PLANET ANATOMY — a large central exoplanet cutaway showing labeled layers: atmosphere, cloud top / observable surface, crust, upper mantle, lower mantle, outer core, inner core. The planet has a luminous cyan atmospheric rim, rocky outer surface, orange silicate mantle, molten metallic outer core, and a bright glowing inner core. Clean thin annotation lines and short labels.
+
+5. ATMOSPHERE LAYERS — a row of atmosphere examples: thin atmosphere, H2/He dominant, water vapor rich, CO2 dominant, methane rich, exotic hazes. Each shown as a planet limb or atmosphere crescent with different color and thickness.
+
+6. CORE COMPOSITION EXAMPLES — multiple mini cutaway planets: rocky terrestrial, iron-rich super-Earth, ocean/ice world, carbon planet, gas giant core, lava world. Each with different layer thicknesses and distinct materials.
+
+7. ICONS AND LEGEND SYSTEM — small monoline icons for temperature, pressure, density, gravity, magnetic field, tectonics, water content, atmosphere thickness, star type, rim lighting, shadow terminator, haze glow.
+
+8. DATA AND UI COMPONENTS — an example planet card, temperature slider, layer thickness chart, material dot legend, and small data visualization modules.
+
+9. BACKGROUNDS AND LIGHTING — lighting strips for different star types and viewing conditions: warm star, blue star, rim-lit planet, nebula background, night-side crescent.
+
+Rendering rules: use a single consistent star light direction; maintain readable layer boundaries; use atmospheric rim glow to communicate atmosphere type; use orange/white emissive glow for hot interiors; use blue/white translucency for ice and water; use silver/grey metallic textures for iron/nickel cores; use graphite/charcoal faceted materials for carbon worlds. Keep all text short, crisp, and legible with accurate-looking scientific labels and high letter spacing — no long paragraphs. Make it highly polished, cinematic, and coherent as a reusable exoplanet design system. A pristine 4K/8K master design-system board.
+
+Avoid: cartoon planets, fantasy magic core, random neon colors, overly busy sci-fi HUD, illegible tiny text, flat poster with no depth, generic space wallpaper, thick atmosphere on every planet, identical layer thickness across all planets, blurry typography, pixelated crop, watermark.

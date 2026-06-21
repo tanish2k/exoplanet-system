@@ -1,0 +1,8 @@
+Create a seamless, tileable square ALBEDO (base color) texture for a rocky terrestrial exoplanet crust.
+
+Material: dark basaltic volcanic rock — charcoal grey, ash black, muted brown, with subtle rust-orange iron-oxide mineral staining and faint pale mineral flecks.
+Surface: rough cracked volcanic crust, fractured plates, small crater-like pits, sharp stone grain, subtle mineral veins, dry and rugged, high micro-detail.
+
+Lighting: flat even albedo lighting only. No directional shadows, no highlights, no cast shadows, no vignette, no glow.
+View: orthographic top-down flat material lay, no perspective, no curvature.
+Output: fills frame edge to edge, seamless and tileable, photorealistic high-end PBR material, no border, no rounded corners, no text, no labels, no UI, pure material only.

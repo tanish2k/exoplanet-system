@@ -1,0 +1,17 @@
+SHARED VISUAL STYLE (keep consistent across the whole exoplanet design system): premium dark sci-fi editorial design system, NASA-style scientific visualization combined with a luxury sci-fi interface. Deep black / midnight-blue space background, subtle starfield, faint nebula texture, thin grid lines, crisp panel divisions. Clean modern sans-serif typography, wide uppercase headings, high letter spacing, small precise white labels, thin cyan annotation lines. Color accents: cyan/teal for atmosphere, orange/amber for warm stars and heat, white/silver and blue for hot stars and ice. Luminous, highly detailed, photorealistic planetary renders mixed with clean digital illustration. Single consistent light logic per cell. High contrast, organized and legible. A pristine 4K/8K master design-system board, 16:9.
+
+Create a high-resolution photorealistic 16:9 sub-design-system board titled "BACKGROUNDS & LIGHTING" with the subtitle "Star types, viewing conditions and space backdrops." Focus on how lighting and backgrounds are applied across the system, in clean labeled panels.
+
+1. STAR-TYPE LIGHTING STRIP — a hero row showing the same rocky planet rendered under different stars, lit from one consistent direction, each with a short label and the star color: M-dwarf (warm deep red-orange), K star (warm amber), G star (neutral white, sun-like), F star (cool white), A star (blue-white). Show how the planet's day-side color, terminator, and atmospheric rim shift with star color.
+
+2. VIEWING CONDITIONS — a row of the same planet under different viewing/lighting scenarios with labels: Full phase (front-lit), Terminator (side-lit, dramatic), Night-side crescent (thin lit limb), Rim-lit / backlit (glowing atmosphere halo), Eclipse shadow (planet shadow cast on a moon).
+
+3. SPACE BACKGROUNDS — a set of background swatches / tiles: deep black void, midnight-blue gradient, subtle starfield (sparse), dense starfield, faint blue nebula, magenta-teal nebula, dusty band. Each labeled, tileable-looking.
+
+4. STARFIELD DENSITY & COLOR — small comparison cells showing sparse vs dense starfields and warm vs cool star color variation, with twinkle highlights.
+
+5. LIGHTING DIAGRAM — a clean diagram of a planet with a single star light source, labeling key light direction, day side, terminator, night side, and atmospheric rim glow along the silhouette, with thin cyan annotation lines.
+
+6. NEBULA & BLOOM TREATMENT — small examples of bloom, lens glow on a bright star disk, and a vivid multi-color nebula backdrop used behind a planet.
+
+Keep all labels short, scientific, and legible with high letter spacing. Avoid: generic space wallpaper, neon colors, blurry typography, illegible microtext, thick atmosphere on every planet, watermark.

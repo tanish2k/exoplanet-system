@@ -1,0 +1,23 @@
+SHARED VISUAL STYLE (keep consistent across the whole exoplanet design system): premium dark sci-fi editorial design system, NASA-style scientific visualization combined with a luxury sci-fi interface. Deep black / midnight-blue space background, subtle starfield, faint nebula texture, thin grid lines, crisp panel divisions. Clean modern sans-serif typography, wide uppercase headings, high letter spacing, small precise white labels, thin cyan annotation lines, subtle glassmorphism panels with thin cyan borders and inner glow. Color accents: cyan/teal for atmosphere and UI, orange/amber for heat and data highs, white/silver for labels. Luminous, highly detailed, photorealistic planetary renders mixed with clean digital illustration. High contrast, information-dense but organized and legible. A pristine 4K/8K master design-system board, 16:9.
+
+Create a high-resolution photorealistic 16:9 sub-design-system board titled "DATA & UI COMPONENTS" with the subtitle "Reusable interface kit for the exoplanet system." A clean UI component sheet on a deep black background, organized into neat labeled modules with generous spacing.
+
+1. PLANET CARD — a hero glassmorphism card with a small luminous planet render, a planet name and type, and a stacked metric list (Radius, Mass, Density, Gravity, Surface Temp, Magnetic Field), each metric with a tiny monoline icon and a value.
+
+2. TEMPERATURE GRADIENT SLIDER — a horizontal range slider with a blue-to-orange thermal gradient track, a draggable handle, and Kelvin tick labels (e.g. 200 K to 1500 K).
+
+3. LAYER THICKNESS CHART — a donut / radial chart showing planet layer proportions (Atmosphere, Crust, Upper Mantle, Lower Mantle, Outer Core, Inner Core) with a small color-coded legend and percentages.
+
+4. COMPOSITION DONUT + SPARKLINE — a material composition donut and a thin inline sparkline trend, both in cyan/orange/white.
+
+5. MATERIAL DOT LEGEND — a tidy legend grid of small circular material swatches with labels: iron, silicate rock, ice, carbon, magma, metallic hydrogen, water, atmosphere.
+
+6. ATMOSPHERE DOTS — a compact row of small atmosphere indicator dots (thin, H2/He, water vapor, CO2, methane, haze) with labels.
+
+7. METRIC ROWS & BADGES — example data rows with label-value pairs and small status badges (e.g. "Habitable Zone", "Tidally Locked", "Strong Dynamo").
+
+8. ANNOTATION / CALLOUT SYSTEM — thin cyan leader lines with end dots and short text callouts pointing to a small planet, showing the annotation style for cutaways.
+
+9. CONTROLS — buttons, toggles, segmented control, and a star-type selector (M / K / G / F / A) shown as a small pill group.
+
+Keep every module crisp, labeled, and legible, with real-looking but short technical text and high letter spacing. Avoid: busy fake HUD, neon colors, illegible microtext, blurry typography, cluttered overlap, watermark.
